@@ -8,16 +8,16 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Orders</div>
+                <div class="panel-heading">Order Items</div>
 
                 <div class="panel-body">
                     <table class="table table-hover table-bordered table-striped datatable" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Order Id</th>
-                                <th>Invoice Number</th>
-                                <th>Total Amount</th>
-                                <th>Action</th>
+                                <th>Item Id</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
                             </tr>
                         </thead>
                     </table>
@@ -34,12 +34,12 @@ $(document).ready(function() {
     $('.datatable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{{ url('orders/getdata') }}',
+        ajax: {url:"{{ url('orders/'.request()->route('id').'/getdata') }}", dataSrc:""},
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'invoice_number', name: 'invoice_number'},
-            {data: 'total_amount', name: 'total_amount'},
-            {data: 'action', name: 'action'}
+            {data: 'product_name', name: 'product_name'},
+            {data: 'price', name: 'price'},
+            {data: 'quantity', name: 'quantity'},
         ]
     });
 });

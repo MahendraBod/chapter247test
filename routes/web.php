@@ -37,5 +37,7 @@ Route::group(['middleware'=>'can:manage-shops', 'prefix'=>'products'], function(
 Route::group(['middleware'=>'can:manage-shops', 'prefix'=>'orders'], function(){
     Route::get('/', 'OrderController@index');
     Route::get('/getdata', 'OrderController@getOrderData');
+    Route::get('/{id}', 'OrderController@viewOrder');
+    Route::get('/{id}/getdata', 'OrderController@getOrderItems');
 });
 
